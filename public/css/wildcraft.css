@@ -30,3 +30,13 @@ h1 {
     width:42px;
     height:42px;
 }
+
+.left {
+    transform: rotate(180deg);
+}
+.top {
+    transform: rotate(-90deg);
+}
+.bottom {
+    transform: rotate(90deg);
+}

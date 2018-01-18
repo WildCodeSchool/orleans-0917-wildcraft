@@ -30,6 +30,8 @@ abstract class Character implements RenderInterface
      */
     private $name;
 
+    private $direction;
+
     /**
      * Character constructor.
      * @param string $name
@@ -50,6 +52,22 @@ abstract class Character implements RenderInterface
     public function getCoordinates(): array
     {
         return $this->coordinates;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDirection()
+    {
+        return $this->direction;
+    }
+
+    /**
+     * @param mixed $direction
+     */
+    public function setDirection($direction)
+    {
+        $this->direction = $direction;
     }
 
     /**
@@ -93,7 +111,7 @@ abstract class Character implements RenderInterface
 
     public function render(): string
     {
-        return '<img class="character" id="'. $this->getName() .'" src="images/'.$this->getImage().'" />';
+        return '<img class="character '. $this->getDirection() .'"  src="images/'.$this->getImage().'" />';
     }
 
 }

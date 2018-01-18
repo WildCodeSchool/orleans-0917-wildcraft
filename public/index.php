@@ -8,24 +8,28 @@
 chdir(dirname(__DIR__));
 require 'vendor/autoload.php';
 
-$hero = new \App\Hero('bilbo', 'hero.png');
+$bilbo = new \App\Hero('bilbo', 'hero.png');
 
 $x = $_GET['x'] ?? 0;
 $y = $_GET['y'] ?? 0;
+$direction = $_GET['direction'] ?? 'right';
 
-$hero->setCoordinates([$x, $y]);
+$bilbo->setCoordinates([$x, $y]);
+$bilbo->setDirection($direction);
 
 $map = new \App\Map(
     [
-        [1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1],
     ],
-    [$hero]
+    [$bilbo]
 );
 
 
