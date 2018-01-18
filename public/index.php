@@ -15,4 +15,8 @@ $map = new \App\Map([
     [1,1,1,1],
 ]);
 
-echo $map->render();
+$loader = new Twig_Loader_Filesystem('src/View');
+$twig = new Twig_Environment($loader);
+$template = $twig->load('index.html');
+
+echo $template->render(['map' => $map->render()]);

@@ -1,3 +1,17 @@
+@font-face {
+    font-family: "LifeCraft";
+    src: url('../font/LifeCraft_Font.ttf');
+}
+
+body {
+    font-family: "LifeCraft";
+}
+
+h1 {
+    font-size: 80px;
+    font-weight: normal;
+}
+
 #map td {
     background-color: #00FF00;
 }
