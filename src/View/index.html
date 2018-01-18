@@ -11,5 +11,13 @@
 <body>
     <h1>WildCraft</h1>
     {{ map | raw }}
+
+    <div class="move">
+        <a href="?x={{(x-1)}}&y={{y}}"><-</a>
+        <a href="?x={{(x+1)}}&y={{y}}">-></a>
+        <a href="?x={{(x)}}&y={{y-1}}">^</a>
+        <a href="?x={{(x)}}&y={{y+1}}">v</a>
+    </div>
+
 </body>
 </html>
