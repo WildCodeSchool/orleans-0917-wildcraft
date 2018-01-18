@@ -8,12 +8,18 @@
 chdir(dirname(__DIR__));
 require 'vendor/autoload.php';
 
+$hero = new \App\Hero("Lord Sylvinou", 'images/tree.png', [2,1]);
+
 $map = new \App\Map([
-    [1,1,1,1],
-    [1,1,1,1],
-    [1,1,1,1],
-    [1,1,1,1],
-]);
+    [1,1,1,1,1,1],
+    [1,1,1,1,1,1],
+    [1,1,1,1,1,1],
+    [1,1,1,1,1,1],
+    [1,1,1,1,1,1],
+    [1,1,1,1,1,1],
+    [1,1,1,1,1,1],
+],
+    [$hero]);
 
 $loader = new Twig_Loader_Filesystem('src/View');
 $twig = new Twig_Environment($loader);

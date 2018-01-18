@@ -13,7 +13,7 @@ namespace App;
  * Class Character
  * @package App
  */
-abstract class Character
+abstract class Character implements RenderInterface
 {
     /**
      * @var array
@@ -88,6 +88,11 @@ abstract class Character
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function render(): string
+    {
+        return '<img src="'.$this->getImage().'" />';
     }
 
 }

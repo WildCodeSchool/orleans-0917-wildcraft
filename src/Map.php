@@ -12,7 +12,7 @@ namespace App;
  * Class Map
  * @package App
  */
-class Map
+class Map implements RenderInterface
 {
     /**
      * @var array
@@ -68,11 +68,24 @@ class Map
      */
     public function render() : string
     {
+        $characters = [];
+        /* @var $character \App\Character */
+        foreach($this->getCharacters() as $character) {
+            $coord = $character->getCoordinates();
+            $x = $coord[0];
+            $y = $coord[1];
+            $characters[$x][$y] = $character;
+        }
+
         $table = '<table id="map">';
-        foreach ($this->getGrid() as $row) {
+        foreach ($this->getGrid() as $x => $row) {
             $table .= "<tr>";
-                foreach ($row as $col) {
-                    $table .= "<td>&nbsp;</td>";
+                foreach ($row as $y => $col) {
+                    if (isset($characters[$x][$y])) {
+                        $table .= "<td>".$characters[$x][$y]->render()."</td>";
+                    } else {
+                        $table .= "<td>&nbsp;</td>";
+                    }
                 }
             $table .= "</tr>";
         }
