@@ -1,0 +1,20 @@
+{
+    "name": "nico/wildcraft",
+    "description": "Sylv et Nick font un petit rpg à la Wild",
+    "authors": [
+        {
+            "name": "NicoV",
+            "email": "nicolas@wildcodeschool.fr"
+        },
+        {
+            "name": "Sylvinou",
+            "email": "sylvain@wildcodeschool.fr"
+        }
+    ],
+    "autoload" : {
+        "psr-4" : {
+            "App\\": "src/"
+        }
+    },
+    "require": {}
+}
