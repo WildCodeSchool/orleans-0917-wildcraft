@@ -79,17 +79,17 @@ class Map implements RenderInterface
 
         $table = '<table id="map">';
         foreach ($this->getGrid() as $x => $row) {
-            $table .= "<tr>";
+            $table .= '<tr>';
                 foreach ($row as $y => $col) {
                     if (isset($characters[$x][$y])) {
-                        $table .= "<td>".$characters[$x][$y]->render()."</td>";
+                        $table .= '<td>'.$characters[$x][$y]->render().'</td>';
                     } else {
-                        $table .= "<td>&nbsp;</td>";
+                        $table .= '<td>&nbsp;</td>';
                     }
                 }
-            $table .= "</tr>";
+            $table .= '</tr>';
         }
-        $table .= "</table>";
+        $table .= '</table>';
 
         return $table;
     }

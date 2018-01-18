@@ -5,11 +5,31 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/wildcraft.css">
     <title>Wildcraft</title>
 </head>
 <body>
-    <h1>WildCraft</h1>
-    {{ map | raw }}
+
+<div class="container-fluid">
+
+    <h1 class="text-center">WildCraft</h1>
+
+    <div class="row ">
+        <div class="col-sm-12">
+            {{ map | raw }}
+        </div>
+    </div>
+    <div class="row">
+        <form id="move_form" method="GET" action="">
+            <input type="hidden" id="x" name="x" value="{{x}}">
+            <input type="hidden" id="y" name="y" value="{{y}}">
+        </form>
+
+    </div>
+</div>
+
+<script src="js/move.js"></script>
 </body>
 </html>

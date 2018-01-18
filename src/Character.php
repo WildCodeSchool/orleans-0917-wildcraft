@@ -90,9 +90,10 @@ abstract class Character implements RenderInterface
         return $this->name;
     }
 
+
     public function render(): string
     {
-        return '<img src="'.$this->getImage().'" />';
+        return '<img class="character" id="'. $this->getName() .'" src="images/'.$this->getImage().'" />';
     }
 
 }
