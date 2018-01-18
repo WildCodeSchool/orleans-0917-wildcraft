@@ -20,12 +20,18 @@ class Map
     private $grid;
 
     /**
+     * @var array
+     */
+    private $characters;
+
+    /**
      * Map constructor.
      * @param array $grid
      */
-    public function __construct(array $grid)
+    public function __construct(array $grid, array $characters=[])
     {
         $this->grid = $grid;
+        $this->characters = $characters;
     }
 
     /**
@@ -35,6 +41,26 @@ class Map
     {
         return $this->grid;
     }
+
+    /**
+     * @return array
+     */
+    public function getCharacters(): array
+    {
+        return $this->characters;
+    }
+
+    /**
+     * @param array $characters
+     * @return Map
+     */
+    public function setCharacters(array $characters): Map
+    {
+        $this->characters = $characters;
+
+        return $this;
+    }
+
 
     /**
      * Retourne un tableau HTML représentant la grille
