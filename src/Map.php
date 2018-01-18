@@ -20,6 +20,15 @@ class Map
     private $grid;
 
     /**
+     * Map constructor.
+     * @param array $grid
+     */
+    public function __construct(array $grid)
+    {
+        $this->grid = $grid;
+    }
+
+    /**
      * @return array
      */
     public function getGrid(): array
@@ -28,12 +37,21 @@ class Map
     }
 
     /**
-     * @param array $grid
-     * @return Map
+     * Retourne un tableau HTML représentant la grille
+     * @return string
      */
-    public function setGrid(array $grid): Map
+    public function render() : string
     {
-        $this->grid = $grid;
-        return $this;
+        $table = '<table id="map">';
+        foreach ($this->getGrid() as $row) {
+            $table .= "<tr>";
+                foreach ($row as $col) {
+                    $table .= "<td>&nbsp;</td>";
+                }
+            $table .= "</tr>";
+        }
+        $table .= "</table>";
+
+        return $table;
     }
 }
