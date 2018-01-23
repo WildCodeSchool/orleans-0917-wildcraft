@@ -32,6 +32,8 @@ abstract class Character implements RenderInterface
 
     private $direction;
 
+    private $map;
+
     /**
      * Character constructor.
      * @param string $name
@@ -74,6 +76,7 @@ abstract class Character implements RenderInterface
      * @param array $coordinates
      * @return Character
      */
+    // 5,2 6,2
     public function setCoordinates(array $coordinates): Character
     {
         $this->coordinates = $coordinates;
@@ -107,6 +110,26 @@ abstract class Character implements RenderInterface
     {
         return $this->name;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getMap()
+    {
+        return $this->map;
+    }
+
+    /**
+     * @param mixed $map
+     * @return Character
+     */
+    public function setMap($map)
+    {
+        $this->map = $map;
+
+        return $this;
+    }
+
 
 
     public function render(): string

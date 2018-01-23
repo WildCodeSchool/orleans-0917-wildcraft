@@ -28,18 +28,43 @@ class Map implements RenderInterface
      * Map constructor.
      * @param array $grid
      */
-    public function __construct(array $grid, array $characters=[])
+    public function __construct(array $grid, array $characters = [])
     {
         $this->grid = $grid;
         $this->characters = $characters;
+        $this->setMapToCharacters();
     }
 
     /**
-     * @return array
+     * Retourne un tableau HTML représentant la grille
+     * @return string
      */
-    public function getGrid(): array
+    public function render(): string
     {
-        return $this->grid;
+        $characters = [];
+        /* @var $character \App\Character */
+        foreach ($this->getCharacters() as $character) {
+            $coord = $character->getCoordinates();
+            $x = $coord[0];
+            $y = $coord[1];
+            $characters[$x][$y] = $character;
+        }
+
+        $table = '<table id="map">';
+        foreach ($this->getGrid() as $x => $row) {
+            $table .= '<tr>';
+            foreach ($row as $y => $col) {
+                if (isset($characters[$x][$y])) {
+                    $table .= '<td>' . $characters[$x][$y]->render() . '</td>';
+                } else {
+                    $table .= '<td>&nbsp;</td>';
+                }
+            }
+            $table .= '</tr>';
+        }
+        $table .= '</table>';
+
+        return $table;
     }
 
     /**
@@ -61,36 +86,18 @@ class Map implements RenderInterface
         return $this;
     }
 
-
     /**
-     * Retourne un tableau HTML représentant la grille
-     * @return string
+     * @return array
      */
-    public function render() : string
+    public function getGrid(): array
     {
-        $characters = [];
-        /* @var $character \App\Character */
-        foreach($this->getCharacters() as $character) {
-            $coord = $character->getCoordinates();
-            $x = $coord[0];
-            $y = $coord[1];
-            $characters[$x][$y] = $character;
-        }
+        return $this->grid;
+    }
 
-        $table = '<table id="map">';
-        foreach ($this->getGrid() as $x => $row) {
-            $table .= '<tr>';
-                foreach ($row as $y => $col) {
-                    if (isset($characters[$x][$y])) {
-                        $table .= '<td>'.$characters[$x][$y]->render().'</td>';
-                    } else {
-                        $table .= '<td>&nbsp;</td>';
-                    }
-                }
-            $table .= '</tr>';
+    private function setMapToCharacters()
+    {
+        foreach ($this->getCharacters() as $character) {
+            $character->setMap($this);
         }
-        $table .= '</table>';
-
-        return $table;
     }
 }

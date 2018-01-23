@@ -4,11 +4,11 @@
 }
 
 body {
-    font-family: "LifeCraft";
 }
 
 h1 {
     font-size: 80px;
+    font-family: "LifeCraft";
     font-weight: normal;
 }
 
